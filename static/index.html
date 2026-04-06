@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Resume Analyzer</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🤖 AI Resume Analyzer</h1>
+      <p>Upload your resume and paste a job description to get instant AI feedback</p>
+    </header>
+
+    <div class="upload-section">
+      <div class="input-group">
+        <label>📄 Upload Resume (PDF or DOCX)</label>
+        <div class="file-drop" id="fileDrop">
+          <input type="file" id="resumeFile" accept=".pdf,.docx" hidden />
+          <span id="fileLabel">Click to upload or drag & drop</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>💼 Job Description</label>
+        <textarea id="jobDesc" placeholder="Paste the job description here..."></textarea>
+      </div>
+
+      <button id="analyzeBtn" onclick="analyzeResume()">
+        ✨ Analyze Resume
+      </button>
+    </div>
+
+    <div id="loader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>Analyzing with Claude AI...</p>
+    </div>
+
+    <div id="results" class="results hidden">
+
+      <div class="score-section">
+        <div class="score-circle" id="scoreCircle">
+          <span id="scoreValue">0</span>
+          <small>ATS Score</small>
+        </div>
+        <div class="verdict-badge" id="verdictBadge"></div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>📝 Resume Summary</h3>
+          <p id="summaryText"></p>
+        </div>
+
+        <div class="card">
+          <h3>💪 Strengths</h3>
+          <ul id="strengthsList"></ul>
+        </div>
+
+        <div class="card">
+          <h3>✅ Skills Found</h3>
+          <div id="skillsFound" class="tags"></div>
+        </div>
+
+        <div class="card">
+          <h3>❌ Missing Skills</h3>
+          <div id="skillsMissing" class="tags missing"></div>
+        </div>
+      </div>
+
+      <div class="card full-width">
+        <h3>🔧 Improvement Tips</h3>
+        <ol id="improvementList"></ol>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
