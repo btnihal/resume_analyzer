@@ -26,8 +26,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def home():
-    # UTF-8 encoding fix here
-    with open("static/index.html", encoding="utf-8") as f:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(BASE_DIR, "static", "index.html"), encoding="utf-8") as f:
         return f.read()
 
 @app.get("/favicon.ico")
