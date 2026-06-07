@@ -1,5 +1,4 @@
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from parser import extract_text
@@ -22,18 +21,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-@app.get("/", response_class=HTMLResponse)
-async def home():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(BASE_DIR, "static", "index.html"), encoding="utf-8") as f:
-        return f.read()
-
-@app.get("/favicon.ico")
-async def favicon():
-    # Stops the 404 favicon error
-    return HTMLResponse(content="", status_code=204)
 
 @app.post("/analyze")
 async def analyze(

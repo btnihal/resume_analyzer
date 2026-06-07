@@ -1,0 +1,9 @@
+<div class="container">
+  <header>
+    <h1>🤖 AI Resume Analyzer</h1>
+    <p>Upload your resume and paste a job description to get instant AI feedback</p>
+  </header>
+
+  <app-upload (analysisComplete)="onAnalysisComplete($event)"></app-upload>
+  <app-results [result]="analysisResult"></app-results>
+</div>

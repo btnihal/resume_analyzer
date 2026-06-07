@@ -1,0 +1,48 @@
+<div class="results" *ngIf="result">
+  <div class="score-section">
+    <div class="score-circle" [style.background]="getScoreGradient()">
+      <div class="score-inner">
+        <span class="score-value">{{ result.ats_score }}</span>
+        <small>ATS Score</small>
+      </div>
+    </div>
+    <div class="verdict-badge"
+         [style.color]="getVerdictColor()"
+         [style.border-color]="getVerdictColor()"
+         [style.background-color]="getVerdictColor() + '22'">
+      {{ result.verdict }}
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>📝 Resume Summary</h3>
+      <p>{{ result.summary }}</p>
+    </div>
+    <div class="card">
+      <h3>💪 Strengths</h3>
+      <ul>
+        <li *ngFor="let s of result.strengths">{{ s }}</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>✅ Skills Found</h3>
+      <div class="tags">
+        <span *ngFor="let s of result.skills_found">{{ s }}</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>❌ Missing Skills</h3>
+      <div class="tags missing">
+        <span *ngFor="let s of result.missing_skills">{{ s }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card full-width">
+    <h3>🔧 Improvement Tips</h3>
+    <ol>
+      <li *ngFor="let tip of result.improvements">{{ tip }}</li>
+    </ol>
+  </div>
+</div>

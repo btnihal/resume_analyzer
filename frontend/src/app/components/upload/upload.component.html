@@ -1,0 +1,31 @@
+<div class="upload-section">
+  <div class="input-group">
+    <label>📄 Upload Resume (PDF or DOCX)</label>
+    <div class="file-drop"
+         [class.has-file]="hasFile"
+         (click)="fileInput.click()"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event)">
+      <input #fileInput type="file" accept=".pdf,.docx"
+             (change)="onFileSelected($event)" hidden />
+      <span>{{ fileName }}</span>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label>💼 Job Description</label>
+    <textarea [(ngModel)]="jobDescription"
+              placeholder="Paste the job description here..."></textarea>
+  </div>
+
+  <div class="error-msg" *ngIf="errorMessage">
+    ⚠️ {{ errorMessage }}
+  </div>
+
+  <button (click)="analyze()" [disabled]="isLoading">
+    <span *ngIf="!isLoading">✨ Analyze Resume</span>
+    <span *ngIf="isLoading" class="loading-text">
+      <span class="spinner"></span> Analyzing with AI...
+    </span>
+  </button>
+</div>
