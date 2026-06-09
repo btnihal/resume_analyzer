@@ -16,7 +16,7 @@ app = FastAPI(title="AI Resume Analyzer")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://resume-analyzer-k2f6.onrender.com/"],
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ResumeService {
-  private apiUrl = 'http://localhost:8000/analyze';
+  private apiUrl = 'https://resume-analyzer-k2f6.onrender.com/';
 
   constructor(private http: HttpClient) {}
 
