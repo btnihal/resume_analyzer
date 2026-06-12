@@ -22,21 +22,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Serve static files
+#  Serve static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# ✅ Serve HTML homepage
+#  Serve HTML homepage
 @app.get("/")
 async def home():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     return FileResponse(os.path.join(BASE_DIR, "static", "index.html"))
 
-# ✅ Favicon
+# Favicon
 @app.get("/favicon.ico")
 async def favicon():
     return HTMLResponse(content="", status_code=204)
 
-# ✅ Analyze route
+#  Analyze route
 @app.post("/analyze")
 async def analyze(
     resume: UploadFile = File(...),
